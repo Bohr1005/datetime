@@ -33,7 +33,7 @@ daytime daytime::from_string(std::string str) {
         }
 
         if (next_char != ":") {
-            throw("Invalid time separator");
+            throw format_error("daytime invalid time separator");
         }
 
         pos += 1;
@@ -41,7 +41,7 @@ daytime daytime::from_string(std::string str) {
 
     if (pos < len_str) {
         if (str.substr(pos, 1) != ".") {
-            throw("Invalid nano component");
+            throw format_error("daytime invalid nano component");
         } else {
             pos += 1;
             auto len_remainder = len_str - pos;
